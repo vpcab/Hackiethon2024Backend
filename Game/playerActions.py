@@ -107,8 +107,9 @@ def attackHit(player, target, damage, atk_range, vertical, blockable, knockback,
     # Checks if target is within the horizontal and vertical attack range
     player_x, player_y = player.get_pos()
     target_x, target_y = target.get_pos()
+    hurt_positions = range(player_x, player_x + (atk_range+1)*player._direction, player._direction)
     # Surehit is for projectiles since collision check is already done
-    if (surehit or (target_x - player_x <= atk_range*player._direction) and 
+    if (surehit or (target_x in hurt_positions) and 
         (abs(target_y - player_y) <= vertical) and (target_y >= player_y)):
         # If target is blocking
         if(target._blocking and blockable):
@@ -225,8 +226,8 @@ def dash_atk(player, target, action):
     player._moves.append((action[0], "activate"))
 
     knockback, stun = attackHit(player, target, *skillInfo)
-    player._xCoord += player._direction * skillInfo[1]
-    correctPos(player)
+    #player._xCoord += player._direction * skillInfo[1]
+    #correctPos(player)
     return knockback, stun
 
 def uppercut(player, target, action):
