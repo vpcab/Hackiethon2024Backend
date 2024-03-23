@@ -10,8 +10,8 @@ from Game.gameSettings import HP, LEFTBORDER, RIGHTBORDER, LEFTSTART, RIGHTSTART
 # SECONDARY CAN BE : Hadoken, Grenade, Boomerang, Bear Trap
 
 # TODO FOR PARTICIPANT: Set primary and secondary skill here
-PRIMARY_SKILL = TeleportSkill
-SECONDARY_SKILL = Hadoken
+PRIMARY_SKILL = Meditate
+SECONDARY_SKILL = SuperSaiyanSkill
 
 #constants, for easier move return
 #movements
@@ -48,10 +48,24 @@ class Script:
     
     # MAIN FUNCTION that returns a single move to the game manager
     def get_move(self, player, enemy, player_projectiles, enemy_projectiles):
-        distance = abs(get_pos(player)[0] - get_pos(enemy)[0])
+        # #default 
+        # distance = abs(get_pos(player)[0] - get_pos(enemy)[0])
 
-        if distance < 3:
-            return LIGHT
+        # if distance < 3:
+        #     return LIGHT
         
-        return FORWARD
+        # return FORWARD
+
+        player_x, player_y = get_pos(player)
+        enemy_x, enemy_y = get_pos(enemy)
+        if player_y == enemy_y and abs(player_x - enemy_x) == 1:
+            if not primary_on_cooldown(player):
+                return PRIMARY
+            if not secondary_on_cooldown(player):
+                return SECONDARY
+            if not heavy_on_cooldown(player):
+                return HEAVY
+            return LIGHT
+        else:
+            return FORWARD
         
