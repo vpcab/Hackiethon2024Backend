@@ -73,13 +73,17 @@ class Script:
 
         # Defensive strategy if low on health or enemy is too close
         if get_hp(player) < 20 and get_hp(player) < get_hp(enemy):
+            # print("we try to block") 
+        #  #TODO: add this back to the conditional. DONE
         # or abs(get_pos(player)[0] - get_pos(enemy)[0]) < 2:
             # Block if enemy is close and likely to attack
             if abs(get_pos(player)[0] - get_pos(enemy)[0]) == 1:
                 # if 
                 if get_block_status(player) >= 5:
+                    # print("we actually block")
                     return BLOCK
                 else:
+                    # print("we")
                     return BACK
             # Move away from the enemy if possible
             elif get_pos(player)[0] < get_pos(enemy)[0]:
@@ -110,8 +114,3 @@ class Script:
         # Default to light attack if nothing else is applicable
         return FORWARD
 
-
-
-
-        # Default to light attack if nothing else is applicable
-        return FORWARD
