@@ -1,0 +1,23 @@
+group 1: we attack
+-if enemy light attacks, we block (if enough shield HP)
+    - if the shield HP is too low AND attack is heavy, jump backwards?
+
+
+
+group 2: we defend
+
+
+WE REACT PLAN: things enemy do:
+Attack: light, heavy (includes stun, knockback), primary attack, secondary attack, projectile
+Block: 
+MOVE
+    Jump: up, down, forward, backwards
+
+ACTION PLAN: 
+Attack: light, heavy, primary, secondary
+move: move, jump
+*defend: block, 
+
+general tactics: 
+- move forward
+- 
